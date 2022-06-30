@@ -5,6 +5,7 @@ import com.companyname.hesapmicroservice.entities.Hesap;
 import com.companyname.hesapmicroservice.repositories.HesapRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,27 +18,27 @@ public class HesapController {
     private HesapService hesapService;
 
     @GetMapping
-    public List<Hesap> TumHesaplariAl() {
-        return hesapService.getAllHesap();
+    public ResponseEntity<List<Hesap>> TumHesaplariAl() {
+        return ResponseEntity.ok(hesapService.getAllHesap());
     }
 
     @PostMapping
-    public Hesap HesapOlustur(@RequestBody Hesap h) {
-        return hesapService.createHesap(h);
+    public ResponseEntity<Hesap> HesapOlustur(@RequestBody Hesap h) {
+        return ResponseEntity.ok(hesapService.createHesap(h));
     }
 
     @GetMapping("/{hesapId}")
-    public Hesap getOneHesap(@PathVariable Long hesapId) {
-        return hesapService.getOneHesap(hesapId);
+    public ResponseEntity<Hesap> getOneHesap(@PathVariable Long hesapId) {
+        return ResponseEntity.ok(hesapService.getOneHesap(hesapId));
     }
 
     @PutMapping("/{hesapId}")
-    public Hesap updateOneHesap(@PathVariable Long hesapId, @RequestBody Hesap newHesap) {
-        return hesapService.birHesabiGuncelle(hesapId, newHesap);
+    public ResponseEntity<Hesap> updateOneHesap(@PathVariable Long hesapId, @RequestBody Hesap newHesap) {
+        return ResponseEntity.ok(hesapService.birHesabiGuncelle(hesapId, newHesap));
     }
 
     @DeleteMapping("/{hesapId}")
-    public String deleteOneHesap(@PathVariable Long hesapId) {
-        return hesapService.birHesabiSil(hesapId);
+    public ResponseEntity<String> deleteOneHesap(@PathVariable Long hesapId) {
+        return ResponseEntity.ok(hesapService.birHesabiSil(hesapId));
     }
 }
