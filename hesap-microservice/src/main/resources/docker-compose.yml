@@ -1,0 +1,36 @@
+# DOCKER el ile de calistirilabilir fakat birden fazla docker olacağından dolayı kolay sekilde calistirmak icin yml(yaml) dosyasi olusturulur
+# start the MySQL container -> "docker-compose -f docker-compose.yml up"
+# connect to server -> mysql -h 127.0.0.1 -u root -P 3306 -p rootpw
+# stop -> docker-compose stop
+version: "3.9" # It uses the docker-compose file version 3.9, one of the latest ones.
+
+services:
+  db: # define db as a service, each service will be equivalent to a new docker run command
+    image: mysql:8.0.29 # point docker-compose to use the official MySQL 8.0.29 image for this DB service.
+    cap_add:
+      - SYS_NICE # The cap_add set to SYS_NICE suppresses some not useful error messages.
+    restart: always # Next up we ask docker-compose to always restart this container if it fails.
+    # add 2 environment variables for the MySQL database and the root user’s password.
+    environment:
+      - MYSQL_DATABASE = hesap_db
+      - MYSQL_USER = root
+      - MYSQL_ROOT_PASSWORD = root
+      - MYSQL_PASSWORD = root
+    # map the host port 3306 to the container port 3306 as the MySQL server is running on container port 3306
+    # Depending on the preference the host port may be changed.
+    ports:
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+
+    #- Then we add 2 volumes, first one is the DB volume mapped to the below volumes db.
+    #Which basically tells docker and docker-compose to manage the volume for us.
+    #Next, we add an init.sql script which will initialize our quotes database with the given SQL file.
+    volumes:
+      # Where our data will be persisted
+      - db:/var/lib/mysql
+      #- ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+volumes:
+  db:
+    driver: local
