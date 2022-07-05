@@ -1,0 +1,17 @@
+server:
+  port: 8888
+
+# Hatası alınıyorsa;
+# Dosya adı aşağıdaki şekilde değiştirilerek ve içerik olarak da bu şekilde kullanarak çalıştırılabilir.
+#
+# bootstrap.yml --> application.yml
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config-repo # dizini belirt -> bu dizindeki configlerin hepsi load edilir
+  profiles:
+    active: native

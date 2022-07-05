@@ -4,10 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.companyname</groupId> <!--bu isimlendirme onemli-->
 		<artifactId>MicroService-App</artifactId>
+		<groupId>com.companyname</groupId> <!--bu isimlendirme onemli-->
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
+		<relativePath>../pom.xml</relativePath><!-- lookup parent from repository -->
+		<!--<relativePath/>-->
 	</parent>
 
 	<artifactId>Service-Parent</artifactId>
@@ -18,6 +19,7 @@
 
 	<modules>
 		<module>hesap-microservice</module>
+		<module>Config-Server</module>
 	</modules>
 
 	<dependencies>
