@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: hesap-service # name -> hesap-service.yml dosyası anlamına geliyor
+  cloud:
+    config:
+      profile: native
+      uri: http://localhost:8888
+  config:
+    import: configserver:http://localhost:8888
