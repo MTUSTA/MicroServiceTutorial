@@ -1,4 +1,10 @@
-
-deneme:
-  test:
-    key: test-key
+# http://localhost:8888/hesap-service.yml
+spring:
+  jpq:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/mtusta?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
