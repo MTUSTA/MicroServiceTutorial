@@ -1,6 +1,6 @@
 # http://localhost:8888/hesap-service.yml
 spring:
-  jpq:
+  jpa:
     hibernate:
       ddl-auto: update
   datasource:
