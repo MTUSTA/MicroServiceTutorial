@@ -15,3 +15,4 @@ spring:
           search-locations: classpath:/config-repo # dizini belirt -> bu dizindeki configlerin hepsi load edilir
   profiles:
     active: native
+

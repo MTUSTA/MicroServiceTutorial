@@ -1,0 +1,12 @@
+#server: # -> yml dosyası boş kalmaması için geçici olarak tasindi
+#  port: 8761
+
+spring:
+  application:
+    name: eureka-server # eureka-server.yml
+  cloud:
+    config:
+      profile: native
+      uri: http://localhost:8888
+  config:
+    import: configserver:http://localhost:8888
