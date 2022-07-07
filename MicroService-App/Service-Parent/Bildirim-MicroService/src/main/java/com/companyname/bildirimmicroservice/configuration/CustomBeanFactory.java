@@ -1,4 +1,4 @@
-package com.companyname.hesapmicroservice.configuration;
+package com.companyname.bildirimmicroservice.configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

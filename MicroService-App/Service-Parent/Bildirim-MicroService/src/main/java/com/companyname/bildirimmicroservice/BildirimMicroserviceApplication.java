@@ -1,4 +1,4 @@
-package com.companyname.hesapmicroservice;
+package com.companyname.bildirimmicroservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class HesapMicroserviceApplication {
+public class BildirimMicroserviceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HesapMicroserviceApplication.class, args);
+		SpringApplication.run(BildirimMicroserviceApplication.class, args);
 	}
 
 }
