@@ -1,4 +1,4 @@
-package com.companyname.hesapmicroservice.configuration;
+package com.companyname.talimatmicroservice.configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

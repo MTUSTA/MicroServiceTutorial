@@ -1,14 +1,14 @@
-package com.companyname.hesapmicroservice.ResponseDTO;
+package com.companyname.talimatmicroservice.ResponseDTO;
 
 import lombok.Data;
 
 @Data
-public class HesapResponseDto {
+public class TalimatResponseDto {
     // hata durumlarinda buranin doldurulmasi
     private String Error = "";
 
     private String id = "";
-    private String hesapNo = "";
+    private String talimatNo = "";
     private String AdSoyad = "";
 
 }

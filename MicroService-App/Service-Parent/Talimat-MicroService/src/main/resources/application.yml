@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   application:
-    name: hesap-service # name -> hesap-service.yml dosyası anlamına geliyor
+    name: talimat-service # name -> talimat-service.yml dosyası anlamına geliyor
   cloud:
     config:
       profile: native
