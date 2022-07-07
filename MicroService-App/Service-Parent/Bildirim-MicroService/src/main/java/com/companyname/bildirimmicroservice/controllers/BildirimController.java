@@ -65,7 +65,7 @@ public class BildirimController {
     @DeleteMapping("/{bildirimId}")
     @Transactional
     public ResponseEntity<String> deleteOneBildirim(@PathVariable Long BildirimId) {
-        return new ResponseEntity<String>(bildirimService.birTalimatiSil(BildirimId), HttpStatus.OK);
+        return new ResponseEntity<String>(bildirimService.birBildirimiSil(BildirimId), HttpStatus.OK);
     }
 
 

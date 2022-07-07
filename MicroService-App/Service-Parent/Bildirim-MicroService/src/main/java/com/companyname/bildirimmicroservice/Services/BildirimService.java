@@ -47,7 +47,7 @@ public class BildirimService {
         throw new EmptyResultDataAccessException("Bildirim bulunamadi",1);
     }
 
-    public String birTalimatiSil(@PathVariable Long BildirimId) {
+    public String birBildirimiSil(@PathVariable Long BildirimId) {
         try {
             bildirimRepository.deleteById(BildirimId);
             return "Succes";
