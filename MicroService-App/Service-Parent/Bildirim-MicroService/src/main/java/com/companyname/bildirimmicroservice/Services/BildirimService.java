@@ -30,7 +30,7 @@ public class BildirimService {
         return bildirimRepository.findById(BildirimId).orElse(null);
     }
 
-    public Bildirim birHesabiGuncelle(Long BildirimId, Bildirim newBildirim) {
+    public Bildirim birBildirimiGuncelle(Long BildirimId, Bildirim newBildirim) {
         Optional<Bildirim> b = bildirimRepository.findById(BildirimId);
         if (b.isPresent()) {
             try {
@@ -47,7 +47,7 @@ public class BildirimService {
         throw new EmptyResultDataAccessException("Bildirim bulunamadi",1);
     }
 
-    public String birHesabiSil(@PathVariable Long BildirimId) {
+    public String birTalimatiSil(@PathVariable Long BildirimId) {
         try {
             bildirimRepository.deleteById(BildirimId);
             return "Succes";

@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/Bildirim")
+@RequestMapping("/bildirim")
 public class BildirimController {
     @Autowired
     private BildirimService bildirimService;
@@ -40,7 +40,7 @@ public class BildirimController {
         return new ResponseEntity<BildirimResponseDto>(BildirimResponseDto, HttpStatus.CREATED);//ResponseEntity.ok(BildirimResponseDto);
     }
 
-    @GetMapping("/{BildirimId}")
+    @GetMapping("/{bildirimId}")
     public ResponseEntity<BildirimResponseDto> getOneBildirim(@PathVariable Long BildirimId) {
         Bildirim h = bildirimService.getOneBildirim(BildirimId);
         BildirimResponseDto BildirimResponseDto = null;
@@ -49,23 +49,23 @@ public class BildirimController {
             return ResponseEntity.ok(BildirimResponseDto);
         }
         BildirimResponseDto = new BildirimResponseDto();
-        BildirimResponseDto.setError("Bildirim BULUNAMADI");
+        BildirimResponseDto.setError("BILDIRIM BULUNAMADI");
         return ResponseEntity.ok(BildirimResponseDto);
     }
 
-    @PutMapping("/{BildirimId}")
+    @PutMapping("/{bildirimId}")
     @Transactional
     public ResponseEntity<BildirimResponseDto> updateOneBildirim(@PathVariable Long BildirimId, @RequestBody BildirimRequestDto newBildirim) {
         Bildirim h = modelMapper.map(newBildirim, Bildirim.class);
-        Bildirim h1 = bildirimService.birHesabiGuncelle(BildirimId, h);
+        Bildirim h1 = bildirimService.birBildirimiGuncelle(BildirimId, h);
         BildirimResponseDto BildirimResponseDto = modelMapper.map(h1, BildirimResponseDto.class);
         return ResponseEntity.ok(BildirimResponseDto);
     }
 
-    @DeleteMapping("/{BildirimId}")
+    @DeleteMapping("/{bildirimId}")
     @Transactional
     public ResponseEntity<String> deleteOneBildirim(@PathVariable Long BildirimId) {
-        return new ResponseEntity<String>(bildirimService.birHesabiSil(BildirimId), HttpStatus.OK);
+        return new ResponseEntity<String>(bildirimService.birTalimatiSil(BildirimId), HttpStatus.OK);
     }
 
 

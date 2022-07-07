@@ -18,9 +18,11 @@
 	<description>Service-Parent for Spring Boot</description>
 
 	<modules>
-		<module>hesap-microservice</module>
 		<module>Config-Server</module>
 		<module>Eureka-Server</module>
+		<module>Hesap-Microservice</module>
+		<module>Bildirim-MicroService</module>
+		<module>Talimat-MicroService</module>
 	</modules>
 
 	<dependencies>
