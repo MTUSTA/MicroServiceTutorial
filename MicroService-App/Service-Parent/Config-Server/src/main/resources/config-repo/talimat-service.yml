@@ -1,4 +1,4 @@
-# http://localhost:8888/hesap-service.yml
+# http://localhost:8888/talimat-service.yml
 spring:
   jpa:
     show-sql : true

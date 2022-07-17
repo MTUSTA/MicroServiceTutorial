@@ -34,7 +34,14 @@ public class TalimatController {
     public ResponseEntity<TalimatResponseDto> TalimatOlustur(@RequestBody TalimatRequestDto h) {
         Talimat h1 = modelMapper.map(h, Talimat.class);
         Talimat h2 = talimatService.createTalimat(h1);
-        TalimatResponseDto talimatResponseDto = modelMapper.map(h2, TalimatResponseDto.class);
+        TalimatResponseDto talimatResponseDto = null;
+        if (h2 == null) {
+            talimatResponseDto = new TalimatResponseDto();
+            talimatResponseDto.setError("hesap hata");
+            return new ResponseEntity<TalimatResponseDto>(talimatResponseDto, HttpStatus.NOT_FOUND);
+        }
+
+        talimatResponseDto = modelMapper.map(h2, TalimatResponseDto.class);
         return new ResponseEntity<TalimatResponseDto>(talimatResponseDto, HttpStatus.CREATED);//ResponseEntity.ok(talimatResponseDto);
     }
 

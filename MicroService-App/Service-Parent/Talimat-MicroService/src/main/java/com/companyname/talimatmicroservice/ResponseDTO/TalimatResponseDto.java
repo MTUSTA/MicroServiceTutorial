@@ -10,5 +10,6 @@ public class TalimatResponseDto {
     private String id = "";
     private String talimatNo = "";
     private String AdSoyad = "";
+    private Long hesapId;
 
 }

@@ -23,7 +23,8 @@
 		<module>Hesap-Microservice</module>
 		<module>Bildirim-MicroService</module>
 		<module>Talimat-MicroService</module>
-	</modules>
+        <module>Feign-Client</module>
+    </modules>
 
 	<dependencies>
 		<!--MVC - Rest service-->

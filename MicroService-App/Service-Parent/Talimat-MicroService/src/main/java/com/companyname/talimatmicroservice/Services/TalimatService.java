@@ -1,9 +1,12 @@
 package com.companyname.talimatmicroservice.Services;
 
+import com.companyname.feignclient.HesapServiceClient;
+import com.companyname.hesapmicroservice.ResponseDTO.HesapResponseDto;
 import com.companyname.talimatmicroservice.entities.Talimat;
 import com.companyname.talimatmicroservice.repositories.TalimatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,13 +18,21 @@ public class TalimatService {
 
     @Autowired
     private TalimatRepository talimatRepository;
+    @Autowired
+    private HesapServiceClient hesapServiceClient;
 
     public List<Talimat> getAllTalimat() {
         return talimatRepository.findAll();
     }
 
     public Talimat createTalimat(Talimat h) {
-        return talimatRepository.save(h);
+        // talimat olusturulmadan önce hesap var mı kontrol edelim
+        ResponseEntity<HesapResponseDto> res = hesapServiceClient.getOneHesap(h.getHesapId());
+        if (res.getBody().getError().equals("")){
+            return talimatRepository.save(h);
+        }
+
+        return null;
     }
 
     public Talimat getOneTalimat(Long talimatId) {

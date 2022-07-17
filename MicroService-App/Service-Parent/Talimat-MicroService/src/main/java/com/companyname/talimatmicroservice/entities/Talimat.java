@@ -14,4 +14,6 @@ public class Talimat {
     private String talimatNo;
     @Column(nullable = false, name="ad_soyad")
     private String AdSoyad;
+    @Column(nullable = false, name ="hesap_id")
+    private Long hesapId;
 }

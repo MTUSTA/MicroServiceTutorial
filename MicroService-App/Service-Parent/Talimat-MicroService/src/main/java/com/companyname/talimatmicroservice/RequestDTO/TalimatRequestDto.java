@@ -8,5 +8,6 @@ public class TalimatRequestDto {
     private String id;
     private String talimatNo;
     private String AdSoyad;
+    private Long hesapId;
 
 }
