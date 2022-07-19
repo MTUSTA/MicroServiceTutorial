@@ -15,5 +15,11 @@ spring:
           search-locations: classpath:/config-repo # dizini belirt -> bu dizindeki configlerin hepsi load edilir
   profiles:
     active: native
+  # bu ayarlari yazmasakta logging calisiyor SEBEBI:
+  # pom eklendiğinden dolayı ve zipkin.enabled default olarak true olduğundan dolayı
+  # hedef url de port u degistirmedigimizden, zipkin direk kayıt alıyor.
+  zipkin:
+    enabled: true # default
+    base-url: http://localhost:9411/
 
 
