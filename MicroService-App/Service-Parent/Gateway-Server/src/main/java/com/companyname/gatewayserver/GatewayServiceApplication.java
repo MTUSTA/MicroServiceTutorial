@@ -34,7 +34,6 @@ public class GatewayServiceApplication {
                                 .circuitBreaker(c -> c
                                         .setName("Hesap-Service")
                                         .setFallbackUri("forward:/fb/hesap")
-                                        .
                                 )
                                 .rewritePath("/(?<segment>.*)", "/$\\{segment}")
 
