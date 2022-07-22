@@ -28,7 +28,6 @@ public class HesapController {
         List<HesapResponseDto> hesapResponseDtoList = hesapService.getAllHesap().stream().map(hesap -> modelMapper.map(hesap, HesapResponseDto.class)).collect(Collectors.toList());
         return ResponseEntity.ok(hesapResponseDtoList);
     }
-
     @PostMapping
     @Transactional
     public ResponseEntity<HesapResponseDto> HesapOlustur(@RequestBody HesapRequestDto h) {

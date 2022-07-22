@@ -1,0 +1,65 @@
+# https://cloud.spring.io/spring-cloud-gateway/reference/html/
+spring:
+  main:
+    # gateway'in pom.xml'ine spring-boot-starter-web dependecy eklenirse hata alıyor
+    web-application-type: reactive # Spring MVC found on classpath, which is incompatible with Spring Cloud Gateway.
+  application:
+    name: api-gateway
+
+  zipkin:
+    enabled: true
+    base-url: http://localhost:9411/
+
+  config:
+    import: configserver:http://localhost:8888
+
+  cloud:
+    config:
+      profile: native
+      uri: http://localhost:8888
+
+#    gateway:
+#      routes:
+#        - id: Hesap-Service # service id vermek
+#          uri: lb://HESAP-SERVICE # lb -> eureka server uzerindeki load balancer ile HESAP-SERVICE servisini ariyor
+#          predicates:
+#            - Path=/hesap/** # api-gateway e gelen istekler /hesap/ a geliyorsa (** ne olursa olsun), hesap service yi ilgilendiriyor
+#            # path uzantisini degistirip filters koyarakta yonlendirebilirim
+#          filters:
+#            - RewritePath=/(?<segment>.*), /$\{segment} # degisiklige ugramadan gitsin -> ekleme veya cikarma da yapabilirim
+#            - name: Hystrix # Hystrix olmak zorunda
+#              args:
+#                name: Hesap-Service # bu name sadece Dashboard da gozukmesi icin
+#                # Hesap Service icin gelen isteklerin hepsi hata ile karsilasirsa fallbackUriye gidicek
+#                fallbackUri: forward:/fb/hesap # Hata olursa HystrixController a gidicek ordan return alicak
+#        - id: Talimat-Service
+#          uri: lb://TALIMAT-SERVICE
+#          predicates:
+#            - Path=/talimat/**
+#          filters:
+#            - RewritePath=/(?<segment>.*), /$\{segment}
+#            - name: Hystrix
+#              args:
+#                name: Talimat-Service
+#                fallbackUri: forward:/fb/talimat
+
+
+server:
+  port: 9090
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka # api-gateway yonlendirme yaparken eureka'yi kullanmak zorunda
+      # tum bilgiler eureka da
+    register-with-eureka: false
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      cors:
+        allowed-origins: true
+      exposure:
+        include: "*" # Hystrix bilgilerini disari cikarma -> * in anlami kim isterse istesin disari cikar

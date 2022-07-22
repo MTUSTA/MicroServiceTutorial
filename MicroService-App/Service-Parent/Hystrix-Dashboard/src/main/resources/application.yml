@@ -1,0 +1,20 @@
+
+
+spring:
+  application:
+    name: Hystrix
+  zipkin:
+    enabled: true
+    base-url: http://localhost:9411/
+  cloud:
+    config:
+      profile: native
+      uri: http://localhost:8888
+  config:
+    import: configserver:http://localhost:8888
+server:
+  port: 9091 # default 8080 fakat Hesap-Service 8080 portunu kullaniyor
+
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "*"
