@@ -52,7 +52,7 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka # api-gateway yonlendirme yaparken eureka'yi kullanmak zorunda
       # tum bilgiler eureka da
-    register-with-eureka: false
+    register-with-eureka: true
   instance:
     prefer-ip-address: true
 
