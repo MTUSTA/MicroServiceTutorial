@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  ms-rabbitmq:
+    image: rabbitmq:management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      # rabbitmq portu
+      - 5672:5672
+      # management arayuz portu
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=root

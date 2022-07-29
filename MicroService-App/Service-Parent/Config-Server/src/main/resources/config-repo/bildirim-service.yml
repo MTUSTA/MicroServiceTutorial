@@ -15,6 +15,18 @@ spring:
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  rabbitmq:
+    username: root
+    password: root
+  cloud:
+    stream:
+      bindings:
+        # bizim queue yu dinleyen kişi -> yani bildirim dinleyecek
+        input:
+          destination: rabbitmq1
+        # output bizim queue ya girdi yapıcak kişi -> yani talimat girdi olusturcak
+        # output:
+        #  destination:
   zipkin:
     enabled: true
     base-url: http://localhost:9411/

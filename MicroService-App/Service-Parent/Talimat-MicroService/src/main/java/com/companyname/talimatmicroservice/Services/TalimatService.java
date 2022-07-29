@@ -21,6 +21,8 @@ public class TalimatService {
     @Autowired
     private HesapServiceClient hesapServiceClient;
 
+    @Autowired
+    private TalimatBildirimService talimatBildirimService;
     public List<Talimat> getAllTalimat() {
         return talimatRepository.findAll();
     }
@@ -29,7 +31,10 @@ public class TalimatService {
         // talimat olusturulmadan önce hesap var mı kontrol edelim
         ResponseEntity<HesapResponseDto> res = hesapServiceClient.getOneHesap(h.getHesapId());
         if (res.getBody().getError().equals("")){
-            return talimatRepository.save(h);
+            Talimat x = talimatRepository.save(h);
+            // RabbitMq gonderildigi yer
+            talimatBildirimService.sendToQueue(x);
+            return x;
         }
 
         return null;
