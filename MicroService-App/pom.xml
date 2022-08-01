@@ -56,11 +56,20 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>2.3.6</version>
         </dependency>
+
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
             <version>3.1.0</version>
         </dependency>
+
+        <!--Endpoint Uzerinden bilgi alma-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>

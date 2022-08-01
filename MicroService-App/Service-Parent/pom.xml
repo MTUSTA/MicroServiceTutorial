@@ -55,13 +55,6 @@
 			<artifactId>spring-cloud-netflix-eureka-client</artifactId>
 		</dependency>
 
-		<!--Endpoint Uzerinden bilgi alma-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-			<version>2.7.0</version>
-		</dependency>
-
 		<!--zipkin ile takip etme-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
