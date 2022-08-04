@@ -5,60 +5,11 @@
 version: '3.9'
 
 services:
-#  storage:
-#    #image: openzipkin/zipkin-mysql
-#    image: openzipkin/zipkin-cassandra
-#    container_name: zipkin-cassandra
-#    ports:
-#      - 9042:9042 # default ports
-  # Switch storage type to Cassandra
   zipkin:
     image: openzipkin/zipkin:${TAG:-latest}
     container_name: zipkin-server
-   # environment:
-   #   # - STORAGE_TYPE=mysql
-   #   - STORAGE_TYPE=cassandra3
-   #   - CASSANDRA_ENSURE_SCHEMA=true
-   #   - CASSANDRA_CONTACT_POINTS=cassandra
-   #   # - MYSQL_HOST=127.0.0.1
-   #   # - MYSQL_DB=zipkin # The database to use. Defaults to "zipkin".
-   #   # - MYSQL_USER=root
-   #   # - MYSQL_PASS=root
-   #   #- MYSQL_TCP_PORT=3306
-   #   - MYSQL_JDBC_URL= jdbc:mysql://localhost:3306/zipkin?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
-      # Uncomment to enable debug logging
-      # - JAVA_OPTS=-Dlogging.level.zipkin2=DEBUG
-      # Uncomment to enable scribe
-      # - SCRIBE_ENABLED=true
-      # Uncomment to enable self-tracing
-      # - SELF_TRACING_ENABLED=true
+
     ports:
       # Port used for the Zipkin UI and HTTP Api
       - 9411:9411
-#    depends_on:
-#      - storage
-  # Adds a cron to process spans since midnight every hour, and all spans each day
-  # This data is served by http://192.168.99.100:8080/dependency
-  #
-  # For more details, see https://github.com/openzipkin/docker-zipkin-dependencies
-  # Zipkin Dependencies collects spans from storage, analyzes links between services, and stores them for later presentation in the web UI
-#  dependencies:
-#    image: openzipkin/zipkin-dependencies
-#    container_name: dependencies
-#    entrypoint: crond -f
-#    environment:
-      #- STORAGE_TYPE=mysql
-      #- MYSQL_HOST=127.0.0.1
-      #- MYSQL_DB=zipkin # The database to use. Defaults to "zipkin".
-      ## Add the baked-in username and password for the zipkin-mysql image
-      #- MYSQL_USER=zipkin
-      #- MYSQL_PASS=zipkin
-      #- MYSQL_TCP_PORT=3316
-      # Uncomment to see dependency processing logs
-      # - ZIPKIN_LOG_LEVEL=DEBUG
-      # Uncomment to adjust memory used by the dependencies job
-      # - JAVA_OPTS=-verbose:gc -Xms1G -Xmx1G
-#      - STORAGE_TYPE=${STORAGE_TYPE:-cassandra3}
-#      - CASSANDRA_CONTACT_POINTS=cassandra
-#    depends_on:
-#      - storage
+
