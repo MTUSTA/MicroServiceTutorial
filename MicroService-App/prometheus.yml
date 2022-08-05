@@ -1,13 +1,13 @@
 # global settings
 global:
-  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
   evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
   # scrape_timeout is set to the global default (10s).
 
 alerting:
   alertmanagers:
     - static_configs:
-        - targets: ["alertmanager:9093"]
+        - targets: [ "alertmanager:9093" ]
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
@@ -20,18 +20,97 @@ scrape_configs:
   - job_name: 'Prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['localhost:9090']
+      - targets: [ 'localhost:9090' ]
 
   - job_name: "Node Exporter"
     static_configs:
-      - targets: ["node-exporter:9100"]
+      - targets: [ "node-exporter:9100" ]
 
-  - job_name: 'Spring Cloud Application'
+  - job_name: 'Spring Cloud Application 1'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
 
     static_configs:
-      - targets: ['localhost:8080']
-      - targets: ['docker.for.mac.localhost:8080']
+      # - targets: ['localhost:8080']
+      - targets: [ 'docker.for.mac.localhost:8080' ]
         labels:
-          application: 'Hesap Service'
+          application: 'HESAP SERVICE'
+
+  - job_name: 'Spring Cloud Application 2'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: [ 'docker.for.mac.localhost:8081' ]
+        labels:
+          application: 'TALIMAT-SERVICE'
+
+  - job_name: 'Spring Cloud Application 3'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: [ 'docker.for.mac.localhost:8082' ]
+        labels:
+          application: 'BILDIRIM SERVICE'
+
+  - job_name: 'Spring Cloud Application 4'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: [ 'docker.for.mac.localhost:8761' ]
+        labels:
+          application: 'EUREKA SERVICE'
+
+  - job_name: 'Spring Cloud Application 5'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: [ 'docker.for.mac.localhost:8888' ]
+        labels:
+          application: 'CONFIG SERVICE'
+
+  - job_name: 'Spring Cloud Application 6'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: [ 'docker.for.mac.localhost:8090' ]
+        labels:
+          application: 'API-GATEWAY SERVICE'
+
+  - job_name: 'Spring Cloud Application 7'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: [ 'docker.for.mac.localhost:8091' ]
+        labels:
+          application: 'HYSTRIX SERVICE'
+
+  - job_name: 'Spring Cloud Application 8'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: [ 'docker.for.mac.localhost:9999' ]
+        labels:
+          application: 'ADMIN SERVICE'
+
+  - job_name: 'Spring Cloud Application 9'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: [ 'docker.for.mac.localhost:9411' ]
+        labels:
+          application: 'ZIPKIN SERVICE'
+
+  - job_name: 'RABBITMQ'
+    scrape_interval: 60s
+    static_configs:
+      - targets: [ 'docker.for.mac.localhost:15672' ]
+        labels:
+          application: 'RABBITMQ'

@@ -13,8 +13,23 @@ spring:
   config:
     import: configserver:http://localhost:8888
 server:
-  port: 9091 # default 8080 fakat Hesap-Service 8080 portunu kullaniyor
+  port: 8091 # default 8080 fakat Hesap-Service 8080 portunu kullaniyor
 
 hystrix:
   dashboard:
     proxy-stream-allow-list: "*"
+
+management:
+  endpoint:
+    prometheus:
+      enabled: true
+    metrics:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true

@@ -45,7 +45,7 @@ spring:
 
 
 server:
-  port: 9090
+  port: 8090
 
 eureka:
   client:
@@ -56,10 +56,24 @@ eureka:
   instance:
     prefer-ip-address: true
 
+# management:
+#   endpoints:
+#     web:
+#       cors:
+#         allowed-origins: true
+#       exposure:
+#         include: "*" # Hystrix bilgilerini disari cikarma -> * in anlami kim isterse istesin disari cikar
 management:
+  endpoint:
+    prometheus:
+      enabled: true
+    metrics:
+      enabled: true
   endpoints:
     web:
-      cors:
-        allowed-origins: true
       exposure:
-        include: "*" # Hystrix bilgilerini disari cikarma -> * in anlami kim isterse istesin disari cikar
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
