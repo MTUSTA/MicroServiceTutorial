@@ -114,3 +114,10 @@ scrape_configs:
       - targets: [ 'docker.for.mac.localhost:15692' ]
         labels:
           application: 'RABBITMQ'
+
+  - job_name: 'APACHE KAFKA'
+    scrape_interval: 60s
+    static_configs:
+      - targets: [ 'docker.for.mac.localhost:9308' ]
+        labels:
+          application: 'APACHE KAFKA'

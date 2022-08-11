@@ -42,6 +42,12 @@ services:
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9093
       - KAFKA_CLUSTERS_0_ZOOKEEPER=localhost:2181
 
+  kafka-exporter:
+    image: bitnami/kafka-exporter:latest
+    ports:
+      - 9308:9308
+    command:
+      - '--kafka.server=kafka:9093'
 volumes:
   zookeeper_data:
     driver: local
