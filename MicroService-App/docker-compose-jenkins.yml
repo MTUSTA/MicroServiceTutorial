@@ -1,0 +1,15 @@
+ # https://youtu.be/pMO26j2OUME
+ version: '3.9'
+
+ services:
+   jenkins:
+     image: jenkins/jenkins:lts
+     container_name: jenkins
+     # privileged: true
+     # user: root
+     ports:
+       - 8080:8080 # jenkins port
+       - 50000:50000 # master slave communication port
+     # volumes:
+     #     - /home/${myname}/jenkins_compose/jenkins_configuration:/var/jenkins_home
+     #     - /var/run/docker.sock:/var/run/docker.sock
